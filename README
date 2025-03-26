@@ -1,0 +1,36 @@
+            📌 COMANDOS PARA SUBIR CAMBIOS
+            📍 EN LA TERMINAL DEBERÍAN ESTAR PARADOS AQUÍ:
+            EJEMPLO:
+
+            jere@jere:~/Escritorio/prog1-equipo$
+
+            🚀 PASOS PARA SUBIR CAMBIOS A GITHUB
+            Paso 1: Agregar archivos al área de preparación
+
+            git add .
+
+            Paso 2: Confirmar los cambios con un mensaje de commit
+
+            git commit -m "Descripción breve de los cambios, poner el nombre de quien subio los cambios porfa"
+            Paso 3: Enviar los cambios al repositorio remoto
+
+            git push origin main
+
+            📌 Notas Importantes:
+            Asegúrate de estar en la rama correcta con git branch. Si no estás en main, usa:
+
+
+            git checkout main
+
+            Si es la primera vez que subis cambios, puede que necesites autenticarte con GitHub.
+
+
+            📥 Para Descargar Cambios del Repositorio
+            Si hay cambios en GitHub que no tienes localmente, usa:
+
+
+            git pull origin main
+
+            Esto actualizará tus archivos locales con los cambios locales.
+
+            Este README proporciona instrucciones claras para trabajar con Git en el proyecto. 🚀
