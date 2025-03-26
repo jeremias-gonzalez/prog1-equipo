@@ -117,24 +117,24 @@
 #8)
 
 
-nombre = input("ingresa tu nombre:")
-diasNoTrabajados = int(input("cantidad de dias no trabajados:"))
-añoDeIngreso= int(input("ingresa tu año de ingreso a la empresa:"))
+# Entrada de datos
+# nombre = input("Ingresa tu nombre: ")
+# diasNoTrabajados = int(input("Cantidad de días no trabajados: "))
+# añoDeIngreso = int(input("Ingresa tu año de ingreso a la empresa: "))
 
-añoDeIngreso=int(añoDeIngreso)
-diasNoTrabajados = int(diasNoTrabajados)
-diasDelAño=int(365)
-sueldoBasico=int(1000000)
-añoActual=int(diasDelAño == 2025)
-antiguedad= int(diasDelAño * 5)
+# # Definición de constantes
+# añoActual = 2025
+# sueldoBasico = 1000000
 
+# # Cálculo de antigüedad en años
+# antiguedad = añoActual - añoDeIngreso
 
-if diasNoTrabajados == 0 and añoDeIngreso < añoActual:
-    adicicional= sueldoBasico * 0.30
-    resultado = int(sueldoBasico + adicicional)
-    print(f"{nombre}:Ausentismo = {diasNoTrabajados}/ Año de ingreso = {añoDeIngreso} /sueldo:{resultado}")
-elif diasNoTrabajados == 0 and antiguedad < añoActual:
-      print(f"{nombre}:Ausentismo = {diasNoTrabajados}/ Año de ingreso = {añoDeIngreso} / sueldo:{sueldoBasico}")
-
-else:
-     print('nada')
+# # Cálculo del sueldo según condiciones
+# if diasNoTrabajados == 0 and antiguedad >= 5:
+#     adicional = sueldoBasico * 0.30  # 30% adicional
+#     sueldoFinal = sueldoBasico + adicional
+#     print(f"{nombre}: Ausentismo = {diasNoTrabajados} / Año de ingreso = {añoDeIngreso} / Sueldo: {sueldoFinal}")
+# elif diasNoTrabajados == 0:
+#     print(f"{nombre}: Ausentismo = {diasNoTrabajados} / Año de ingreso = {añoDeIngreso} / Sueldo: {sueldoBasico}")
+# else:
+#     print(f"{nombre}: No cumple condiciones para bono. Sueldo: {sueldoBasico}")
