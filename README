@@ -1,36 +1,55 @@
-            📌 COMANDOS PARA SUBIR CAMBIOS
-            📍 EN LA TERMINAL DEBERÍAN ESTAR PARADOS AQUÍ:
-            EJEMPLO:
+                                                📌 Guía Práctica para Subir Cambios a GitHub 🚀
+                                                📍 Posición en la Terminal
+Antes de comenzar, asegúrate de estar ubicado en la carpeta de tu proyecto. Para verificar tu ubicación, puedes usar el comando pwd.
 
-            jere@jere:~/Escritorio/prog1-equipo$
+Ejemplo de ubicación en la terminal:
 
-            🚀 PASOS PARA SUBIR CAMBIOS A GITHUB
-            Paso 1: Agregar archivos al área de preparación
+jere@jere:~/Escritorio/prog1-equipo$
 
-            git add .
+                                                    🚀 Pasos para Subir Cambios a GitHub
+🔹 1. Agregar archivos al área de preparación
+Para incluir todos los cambios en el área de preparación, usa el comando:
 
-            Paso 2: Confirmar los cambios con un mensaje de commit
+git add .
 
-            git commit -m "Descripción breve de los cambios, poner el nombre de quien subio los cambios porfa"
-            Paso 3: Enviar los cambios al repositorio remoto
+Si deseas agregar un archivo específico, reemplaza . por el nombre del archivo.
 
-            git push origin main
+🔹 2. Confirmar los cambios con un mensaje de commit
+Registra los cambios en el historial de Git con un mensaje descriptivo:
 
-            📌 Notas Importantes:
-            Asegúrate de estar en la rama correcta con git branch. Si no estás en main, usa:
+git commit -m "Descripción breve de los cambios - [Tu Nombre]"
 
+🔹 3. Enviar los cambios al repositorio remoto
+Para subir los cambios a GitHub en la rama principal (main):
 
-            git checkout main
+git push origin main
 
-            Si es la primera vez que subis cambios, puede que necesites autenticarte con GitHub.
+Si estás trabajando en otra rama, reemplaza main por el nombre de la rama correspondiente.
 
+                                                            📌 Notas Importantes
+🔹 Verifica en qué rama estás
+Antes de subir los cambios, revisa en qué rama te encuentras con el comando:
 
-            📥 Para Descargar Cambios del Repositorio
-            Si hay cambios en GitHub que no tienes localmente, usa:
+git branch
 
+Si necesitas cambiar a la rama main, usa:
 
-            git pull origin main
+git checkout main
 
-            Esto actualizará tus archivos locales con los cambios locales.
+🔹 Autenticación en GitHub
+Si es la primera vez que subes cambios o has cambiado tus credenciales, GitHub puede solicitar autenticación. Para evitar problemas, puedes configurar una clave SSH o utilizar un token de acceso.
 
-            Este README proporciona instrucciones claras para trabajar con Git en el proyecto. 🚀
+🔹 Revisión antes del push
+Antes de subir los cambios, revisa qué archivos han sido modificados con el comando:
+
+git status
+
+                                                            📥 Descargar Cambios del Repositorio
+Si hay cambios en GitHub que aún no tienes localmente, sincroniza tu repositorio con:
+
+git pull origin main
+
+Esto actualizará tu repositorio local con los últimos cambios remotos.
+
+💡 ¡Con estos comandos mantendrás tu proyecto siempre sincronizado con GitHub de manera eficiente! 🚀
+
