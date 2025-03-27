@@ -30,21 +30,21 @@
 #  Pedir el primer número
 # pedir1 = int(input("Ingresa un número: "))
 
-# # Pedir la opción de operación (+ o -)
+#  # Pedir la opción de operación (+ o -)
 # opcion = input("¿Quieres sumar (+) o restar (-)? ")
 
-# # Pedir el segundo número
+#  # Pedir el segundo número
 # pedir2 = int(input("Ingresa otro número: "))
 
-# # Realizar la operación según la opción elegida
+# # # Realizar la operación según la opción elegida
 # if opcion == "sumar":
-#     resultado = pedir1 + pedir2
-#     print(f"La suma de {pedir1} y {pedir2} es igual a {resultado}.")
+#       resultado = pedir1 + pedir2
+#       print(f"La suma de {pedir1} y {pedir2} es igual a {resultado}.")
 # elif opcion == "restar":
-#     resultado = pedir1 - pedir2
-#     print(f"La resta de {pedir1} y {pedir2} es igual a {resultado}.")
+#        resultado = pedir1 - pedir2
+#        print(f"La resta de {pedir1} y {pedir2} es igual a {resultado}.")
 # else:
-#     print("Opción no válida. Debes elegir '+' o '-'.")
+#      print("Opción no válida. Debes elegir '+' o '-'.")
 
 #4)
 
@@ -138,3 +138,43 @@
 #     print(f"{nombre}: Ausentismo = {diasNoTrabajados} / Año de ingreso = {añoDeIngreso} / Sueldo: {sueldoBasico}")
 # else:
 #     print(f"{nombre}: No cumple condiciones para bono. Sueldo: {sueldoBasico}")
+ 
+#9)
+# peso = input("ingrese su peso:")
+# altura = input("ingrese su altura:")
+
+# peso=float(peso)
+# altura=float(altura)
+
+# formula = peso/altura**2
+
+# if formula < 18.5:
+#     print("bajo peso")
+# elif formula > 18.5 and formula <=24.9:
+#     print("su peso es normal")
+# elif formula > 25 and formula <=29.9:
+#     print("sobrepeso")
+# elif formula >= 30:
+#     print("sos una heladerovich anaannnshei")
+
+# print(f"su indice de masa corporal es de:{formula}")
+
+# pesoPaquete= int(input("ingresa el peso del packete en kg:"))
+# distancia=int(input("ingrese la distancia en km:"))
+
+# pesoPaquete=int(pesoPaquete)
+# distancia=int(distancia)
+# if pesoPaquete > 0 and pesoPaquete < 2:
+#     base = 150
+#     total = base + 10 * distancia
+#     print(f"El costo total de envío de tu paquete de {pesoPaquete} kg a una distancia de {distancia} km es de ${total}")
+# elif pesoPaquete > 0 and pesoPaquete < 6:
+#     base = 300
+#     total = base + 20 * distancia
+#     print(f"El costo total de envío de tu paquete de {pesoPaquete} kg a una distancia de {distancia} km es de ${total}")
+# elif pesoPaquete > 4 and pesoPaquete < 11:
+#     base = 450
+#     total = base + 30 * distancia
+#     print(f"El costo total de envío de tu paquete de {pesoPaquete} kg a una distancia de {distancia} km es de ${total}")
+# elif pesoPaquete > 10:
+#     print("No enviamos paquetes de 10 kg o más")
