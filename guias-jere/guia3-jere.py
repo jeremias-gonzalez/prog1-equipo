@@ -92,3 +92,16 @@
 
 
 #9)
+
+
+pregunta = 's'
+contador = 0 
+
+while pregunta == 's' :
+    # nombre = input('ingresa nombre :')
+    salario = int(input('ingresa salario:'))
+    pregunta = input('quieres seguir operando?: s / n: ')
+    if salario < contador :
+        salario = contador
+    
+print (f'el salario minimo corresponde a {salario}')
