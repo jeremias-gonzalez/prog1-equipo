@@ -78,12 +78,17 @@
 #       pregunta=input("Queres seguir? Si / No ")
       
 #8)
-
 # pregunta = "si"
-# mayor = 0
+
+# nMax = float(0)
+
 # while pregunta  == "si":
-#     numerosP = float(input("ingresa un numero real positivo"))
-#     pregunta = input("Hay mas numeros para ingresar? Si / No:")
-#     mayor = numerosP - mayor
-#     if mayor > numerosP:
-#         print(f"el numero maximo ingresado es {mayor}")
+#      nMin = float(input("ingresa un numero real positivo: "))
+#      if nMin > nMax:
+#         nMax = nMin
+#      pregunta = input("Hay mas numeros para ingresar? Si / No:")
+
+# print(f'el numero mayor ingresado es {nMax}') 
+
+
+#9)
