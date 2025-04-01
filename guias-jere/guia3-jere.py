@@ -66,3 +66,24 @@
 #         print(f"{i} es multiplo de 5")
 
 #7)
+# pregunta ="si"
+# contador = 0
+# while pregunta == "si":
+#       auto = str (input ("Ingrese el auto: "))
+#       precio = int (input ("Ingrese el precio: "))
+#       if precio >= 27460000 and precio <= 33850000:
+#           contador = contador + 1
+    
+
+#       pregunta=input("Queres seguir? Si / No ")
+      
+#8)
+
+# pregunta = "si"
+# mayor = 0
+# while pregunta  == "si":
+#     numerosP = float(input("ingresa un numero real positivo"))
+#     pregunta = input("Hay mas numeros para ingresar? Si / No:")
+#     mayor = numerosP - mayor
+#     if mayor > numerosP:
+#         print(f"el numero maximo ingresado es {mayor}")
