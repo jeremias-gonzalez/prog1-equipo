@@ -42,14 +42,14 @@
 # while pregunta == "si":
 #     personas = int(input("¿Cuántas personas se van a cargar?: "))
 #     print(f"Genial, entonces son {personas} personas")
-    
-  
+
+
 #     for i in range(personas):
 #         edad = int(input(f"Ingresa la edad de la persona {i+1}: "))
 #         totalEdades = totalEdades + edad
 #         cantidadPersonas = cantidadPersonas + 1
-    
-    
+
+
 #     pregunta = input("¿Vas a seguir cargando personas? (si/no): ")
 
 
@@ -73,10 +73,10 @@
 #       precio = int (input ("Ingrese el precio: "))
 #       if precio >= 27460000 and precio <= 33850000:
 #           contador = contador + 1
-    
+
 
 #       pregunta=input("Queres seguir? Si / No ")
-      
+
 #8)
 # pregunta = "si"
 
@@ -88,20 +88,25 @@
 #         nMax = nMin
 #      pregunta = input("Hay mas numeros para ingresar? Si / No:")
 
-# print(f'el numero mayor ingresado es {nMax}') 
+# print(f'el numero mayor ingresado es {nMax}')
 
 
 #9)
 
 
-pregunta = 's'
-contador = 0 
-
-while pregunta == 's' :
-    # nombre = input('ingresa nombre :')
-    salario = int(input('ingresa salario:'))
-    pregunta = input('quieres seguir operando?: s / n: ')
-    if salario < contador :
-        salario = contador
+# pregunta = 's'
+# nMin = float('inf')  
+# nombreMin = str
+# while pregunta == 's':
+#     nombre = input("Ingresa un nombre: ")
+#     salario = int(input('Ingresa su salario: '))
     
-print (f'el salario minimo corresponde a {salario}')
+#     if salario  < nMin:  
+#         nMin = salario
+#         nombreMin = nombre
+#     pregunta = input('¿Quieres seguir operando? (s/n): ')
+
+# print(f"El salario menor es {nMin} y correspomde a {nombreMin}") 
+
+
+
