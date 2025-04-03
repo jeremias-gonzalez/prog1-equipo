@@ -109,4 +109,16 @@
 # print(f"El salario menor es {nMin} y correspomde a {nombreMin}") 
 
 
+#10)
 
+# numero = int(input("Ingrese 7 numeros:"))
+# repetir = numero
+# cartel = 0
+# for repetir in range (1,7):
+#     repetir = int(input(f"ingrese otro:"))
+#     if repetir < 10 :
+#         cartel = repetir
+        
+        
+
+# print(f"{cartel}")
