@@ -122,3 +122,39 @@
         
 
 # print(f"{cartel}")
+
+#11)
+# nombre = ""
+# sexo = ""
+# totalMujeres = 0
+# totalNombres = ""
+# pregunta = "s"
+
+# while pregunta == "s":
+#     nombre = input("Ingrese nombre:")
+#     sexo = input("Ingrese Sexo:")
+#     pregunta = input("vas a seguir ingresando personas? s/n:")
+#     if sexo == "fem":
+#         totalMujeres = totalMujeres +1
+#         totalNombres = totalNombres +","+ nombre
+
+# print(f"El total de mujeres ingresado es : {totalMujeres}")
+# print(f"Sus nombres son : {totalNombres}")
+
+#12)
+
+# lluvia = 0 
+# dias = 0
+# totalLluvia = 0
+# totalDias= 0
+# for lluvia in range (1,8):
+#     dias = dias + 1
+#     lluvia = int(input(f"ingresa mas milimitetros para el dia {dias}: "))
+#     if lluvia > 0:
+#         totalLluvia = totalLluvia + lluvia
+#     elif lluvia == 0 :
+#         totalDias = totalDias + 1
+    
+    
+# print(f"El total que llovido en mm de la semana es {totalLluvia}")
+# print(f"El total de dias que no llovio son : {totalDias}")
