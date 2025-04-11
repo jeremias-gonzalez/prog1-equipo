@@ -29,25 +29,59 @@
 # print(f"el total de vocales ingresadas son {contador} y {otralista}")
 
 #3)
-names = []
-sex = []
-otherSex= []
-question = "s"
-contador=0
+# names = []
+# sex = []
+# otherList= []
+# question = "s"
+# contador=0
+# otherSecondList= []
 
-while question == "s":
-    nm = input("ingresa un nombre:")
-    sx = input("ingresa el sexo:")
-    names.append(nm)
-    sex.append(sx)
-    question = input("quieres seguir ingresando:")
-    for i in range(len(sex)):
-     if sex[i] == "fem":
-        otherSex.append(names[i])
 
-    # contador = contador+1   
+# while question == "s":
+#     nm = input("ingresa un nombre:")
+#     sx = input("ingresa el sexo:")
+#     names.append(nm)
+#     sex.append(sx)
+#     question = input("quieres seguir ingresando:")
+
+#     for i in range(len(names)):
+#         personas = (names[i],sex[i])
+#         otherList.append(personas)
+
+#     for i in range(len(otherList)):
+#         girls = otherList[i]
+#         for i in range(len(girls)):
+#             if girls[i] == "f":
+#                 otherSecondList.append(girls)
+#                 contador= contador+1
+
     
+# print(otherSecondList)
+# print(contador)
+        
+#4)
+# listaN=[2,4,6]
+# listaCuadrada=[]
+
+# for i in listaN:
+#     if i in listaN :
+#         resultado= i**2
+#         listaCuadrada.append(resultado)
+# print(listaCuadrada)
+
+#5)
+# numeros=0
+# pregunta="s"
+# listaPares=[]
+
+# while pregunta == "s":
+#     numeros = int(input("ingresa los numeros pares que quieras:"))
     
-print(otherSex)
-        
-        
+#     if numeros > 0 and numeros < 31:
+#        listaPares.append(numeros)
+#     pregunta=input("quieres seguir agregando numeros:")
+
+# print(listaPares)
+
+#6)
+
