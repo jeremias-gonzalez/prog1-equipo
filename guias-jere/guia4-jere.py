@@ -84,4 +84,22 @@
 # print(listaPares)
 
 #6)
+# nombres=[]
+# nombre=""
+# hayMas= 'si'
+# buscar=""
+# while hayMas == 'si':
+#     nombre+input('ingresa un nombre:')
+#     nombres.append(nombre)
+#     hayMas=input('hay mas?:')
+#     buscar = input('Busca un nombre y sabras su posicion la posicion:')
+# for nombre in nombres:
+#         print(f'su posicion es {nombres.index(nombre)}')
+
+# if nombre in nombres:
+#      print(f'esta repetido ingrese otro y se encuentra en la posicion:{nombres.index(nombre)} ')
+
+
+
+
 
