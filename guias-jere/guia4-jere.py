@@ -75,11 +75,11 @@
 # listaPares=[]
 
 # while pregunta == "s":
-#     numeros = int(input("ingresa los numeros pares que quieras:"))
+#      numeros = int(input("ingresa los numeros pares que quieras:"))
     
-#     if numeros > 0 and numeros < 31:
-#        listaPares.append(numeros)
-#     pregunta=input("quieres seguir agregando numeros:")
+#      if numeros > 0 and numeros < 31:
+#         listaPares.append(numeros)
+#      pregunta=input("quieres seguir agregando numeros:")
 
 # print(listaPares)
 
@@ -102,4 +102,24 @@
 
 
 
+
+# Ingresar nombres en una lista sin repetir, 
+# luego buscar un nombre y de encontrarlo decir en qué posición está.
+lisNombres = []
+pregunta = "s"
+
+while pregunta == "s":
+    nombre = input("Ingresa un nombre: ")
+    if nombre not in lisNombres:
+        lisNombres.append(nombre)
+    else:
+        print(f"'{nombre}' ya existe en la lista. No se agregará de nuevo.")
+    pregunta = input("¿Deseas ingresar otro nombre? (s/n): ")
+
+buscar = input("\nIngresa el nombre que deseas buscar: ")
+if buscar in lisNombres:
+    indice = lisNombres.index(buscar)
+    print(f"'{buscar}' se encuentra en la posición {indice + 1} de la lista.")
+else:
+    print(f"'{buscar}' no se encuentra en la lista.")
 
