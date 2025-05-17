@@ -14,7 +14,7 @@ personas = [
     "Kathryn Backshell,United States(America),04-01-2000"
 ]
 
-"""
+ 
 añoLimite = int(input("Ingrese el año para buscar nacimientos posteriores: "))
 apellidos = []
 
@@ -31,10 +31,9 @@ for persona in personas:
     FechaEntero = int(Fecha)
     if FechaEntero < añoLimite:
         apellidos.append(apellido)
-        
-print(f"Los apellidos de las personas nacidas antes del año {añoLimite} son: {apellidos}")
-"""
-"""
+        resultado= ",".join(apellidos)
+print(f"Los apellidos de las personas nacidas antes del año {añoLimite} son: {resultado}")
+
 ingresePais = input("Ingrese pais: ")
 paisAIngresar = []
 contador = 0
@@ -45,7 +44,7 @@ for persona in personas:
     if ingresePais in pais:
             contador = contador + 1
 print(f"La cantidad de personas nacidas en {ingresePais} es: {contador}")
-"""
+
 ingreseContinente = input("Ingrese Continente: ")
 personasNoEuropeas = []
 
@@ -61,8 +60,10 @@ for persona in personas:
         nombre = nombre.split(" ")
         nombre = nombre[0]
         personasNoEuropeas.append(nombre)
+        resultado= ",".join(personasNoEuropeas)
         
-print(f"Personas no Europeas:{personasNoEuropeas}")
+print(f"Personas no Europeas:{resultado}")
+
 
 
 
