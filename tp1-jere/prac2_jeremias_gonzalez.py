@@ -1,3 +1,5 @@
+#esta vez no le voy a comentarear el codigo profe , presione f5 y corralo nomás,
+
 personas = [
     "Josefa Taponales,France(Europe),30-10-2007",
     "Virgie Brach,Argentina(America),04-02-1994",
@@ -12,27 +14,58 @@ personas = [
     "Kathryn Backshell,United States(America),04-01-2000"
 ]
 
+"""
+añoLimite = int(input("Ingrese el año para buscar nacimientos posteriores: "))
+apellidos = []
+
 for persona in personas:
     persona.split(",")
     nuevalista=persona.split(",")
     nombre = nuevalista[0]
     nombre = nombre.split(" ")
-    nombre = nombre[1]
+    apellido = nombre[1]
     pais = nuevalista[1]
     fecha = nuevalista[2]
     nuevaFecha = fecha.split("-")
     Fecha = nuevaFecha[2]
     FechaEntero = int(Fecha)
-    FechaEntero =int(input("Ingrese año: "))
-    apellidos_antes_del_anio = []
-    if 2000 < FechaEntero:
-        apellidos_antes_del_anio.append(nombre)
-    
-    if apellidos_antes_del_anio:
-        print("Los apellidos de las personas nacidas antes de ese año son:", apellidos_antes_del_anio)
-    else:
-        print("No hay personas nacidas antes de ese año.")
-    
-  # else:
-        #     print("No hay personas nacidas antes de ese año")
-        # print("Apellido: ", nombre)
+    if FechaEntero < añoLimite:
+        apellidos.append(apellido)
+        
+print(f"Los apellidos de las personas nacidas antes del año {añoLimite} son: {apellidos}")
+"""
+"""
+ingresePais = input("Ingrese pais: ")
+paisAIngresar = []
+contador = 0
+for persona in personas:
+    persona.split(",")
+    nuevalista=persona.split(",")
+    pais = nuevalista[1]
+    if ingresePais in pais:
+            contador = contador + 1
+print(f"La cantidad de personas nacidas en {ingresePais} es: {contador}")
+"""
+ingreseContinente = input("Ingrese Continente: ")
+personasNoEuropeas = []
+
+for persona in personas:
+    persona.split(",")
+    nuevalista=persona.split(",")
+    nombre = nuevalista[0]
+    nombre = nombre.split(" ")
+    nombre = nombre[0]
+    pais = nuevalista[1]
+    if ingreseContinente == "Europe" and ingreseContinente not in pais:
+        nombre = nuevalista[0]
+        nombre = nombre.split(" ")
+        nombre = nombre[0]
+        personasNoEuropeas.append(nombre)
+        
+print(f"Personas no Europeas:{personasNoEuropeas}")
+
+
+
+
+ 
+
