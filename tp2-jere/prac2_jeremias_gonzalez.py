@@ -15,7 +15,7 @@ personas = [
 ]
 
  
-añoLimite = int(input("Ingrese el año para buscar nacimientos posteriores: "))
+añoLimite = int(input("Ingrese el año para buscar nacimientos anteriores al ese año: "))
 apellidos = []
 
 for persona in personas:
