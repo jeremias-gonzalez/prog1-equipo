@@ -38,10 +38,10 @@ def cantidadPersonas ():
         pais.append(p[1])
         pass
 
-    # for x in pais:
-    #      if x == "Argentina":
-    #       pass
-    #       contador += 1
+    for x in pais:
+          if x == "Argentina":
+           pass
+           contador += 1
     if ingresar in pais:
              for paisx in pais:
                  if ingresar == paisx:
