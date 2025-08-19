@@ -1,20 +1,12 @@
-#4) Dada una lista con números, 
-# crear otra con los cuadrados de esos valores. 
+#4) Dada una lista con números, crear otra con los cuadrados de esos valores.
 
-n = []
-n_elevados = []
+lista_numeros = [2, 3, 5, 6, 7]
+lista_cuadrados = []
 
-while True:
-    numero = int(input("Ingrese un número: "))
-    pregunta = input('Desea ingresar otro número? (si/no): ')
-    if pregunta == "no":
-        break
-    n.append(numero)
-for i in n:
-    n_elevados.append(i ** 2)
-print(n_elevados)
-
-
-    
-    
-
+"""
+for i in lista_numeros:
+    lista_cuadrados.append(i ** 2)
+print(lista_cuadrados)
+"""
+lista_cuadrados = [i ** 2 for i in lista_numeros]
+print(lista_cuadrados)

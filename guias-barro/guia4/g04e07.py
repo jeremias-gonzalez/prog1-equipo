@@ -1,20 +1,16 @@
-#7) Eliminar todos los valores iguales de una lista. 
+#7) Eliminar todos los valores iguales de una lista.
 # Previamente, solicitar el valor que quiero eliminar y si no está, 
 # mostrar un cartel diciendo que no lo ha encontrado.
 
-valores_repetidos = ["a", "a", "b", "b", "c", "d"]
-
+lista_valoresIguales = ['A', 'A', 'o', 'o', 'p', 'r', 'w', 'z', 'u', 'u']
 
 while True:
-    contador = 0
-    pregunta = input(f'¿Qué valor repetido desea eliminar de la lista?({valores_repetidos}): ')
-    if pregunta in valores_repetidos:
-        for i in valores_repetidos:
-            if pregunta == i:
-                contador += 1
-                valores_repetidos.remove(pregunta)
-            
-        """
-            elif i == 1:
-            print('Es un solo caracter')
-        """
+    contador = 0    
+    valor_a_eliminar = input('¿Qué valor de la lista que sea igual desea eliminar?: ')
+    break
+for i in range(len(lista_valoresIguales)):
+    if valor_a_eliminar in lista_valoresIguales:
+        if lista_valoresIguales[i] > 1:
+            contador += 1
+        lista_valoresIguales.remove(contador)
+print(lista_valoresIguales)        

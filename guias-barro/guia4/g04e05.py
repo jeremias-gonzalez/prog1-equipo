@@ -1,12 +1,5 @@
-#Guardar en una lista los números pares mayores que 0 y menores que 31.
-
-numeros_pares = []
-
-for i in range(31):
-    if i % 2 == 0 and i > 0:
-        numeros_pares.append(i)
-print(numeros_pares)
+#5) Guardar en una lista los números pares mayores que 0 y menores que 31.
 
 
-n_pares =  [i for i in range(31) if i % 2 == 0 and i > 0]
-print(n_pares)
+lista_numeros = [i for i in range(32) if i % 2 == 0]
+print(lista_numeros)
