@@ -3,27 +3,26 @@ with open("tps-jere/tp5-jere/clientes.txt") as f:
     # Guardar cada línea en una lista, quitando saltos de línea
      lineas = f.readlines()
 
-
-
-def cantidadPersonas ():
-    localidades=[]
-    contador = 0
-    #ingresarLocalidad=input("ingresa una localidad para saber la cantidad de personas: ")
-    for linea in lineas:
-        partes = linea.split("#")
-        localidades.append(partes[3])
-  
-    mensaje = print(localidades)
+localidades=[]
+        
+for i in range(len(lineas)):
+    lineas[i] = lineas[i].strip()
     
-     
-    # if ingresarLocalidad in localidades:
-    #          for localidad in localidades:
-    #              if ingresarLocalidad == localidad:
-    #               contador += 1
 
-    #          mensaje = print(f"La cantidad de clientes en {ingresarLocalidad} es {contador}")
-                
+# for i in lineas:
+#     localidades.append(i.split("#")[3])
+# print(localidades)
+# def cantidadPersonas (localidades):
+#     contador = 0
+#     ingresarLocalidad=input("ingresa una localidad para saber la cantidad de personas: ")
+#     if ingresarLocalidad in localidades:
+#                for localidad in localidades:
+#                    if ingresarLocalidad == localidad:
+#                           contador += 1
+#                return print(f"La cantidad de clientes en {ingresarLocalidad} es {contador}")
 
-    return mensaje
+# print(cantidadPersonas(localidades))
 
-print(cantidadPersonas())
+def deudaAcumulada():
+    total = 0
+    monto=input(int("Ingresa un monto:"))

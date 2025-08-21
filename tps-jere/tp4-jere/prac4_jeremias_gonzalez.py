@@ -61,7 +61,7 @@ def inicialApellido (nombre,inicial,calculo):
          p = i.split(",")
          nombre = p[0].split(" ")
          edad = p[2].split("-")
-         calculo = 2025 - int(edad[2]) 
+         calculo = 2025 - int(edad[2])
          if nombre[1].startswith(inicial):
              mensaje=print(f"{nombre[0]} tiene años {calculo}")
      return mensaje
