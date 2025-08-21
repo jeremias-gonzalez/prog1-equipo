@@ -22,14 +22,16 @@ personas = [
 ]
 
 # 1) La cantidad de personas de Argentina.
-argentinos = 0 
-for persona in personas:
-    datos_persona = persona.split(",")
-    if datos_persona[1] == 'Argentina':
-        argentinos +=1
+def contador_personas(texto):
+    argentinos = 0 
+    for persona in texto:
+        datos_persona = persona.split(",")
+        if datos_persona[1] == 'Argentina':
+         argentinos +=1
+    return argentinos
+print(f'La cantidad de Argentinos es: {contador_personas(personas)}')
 
-print(f'La cantidad de Argentinos es: {argentinos}')
-
+'''
 # La cantidad de personas de un país ingresado por el usuario.
 
 buscador = input ('Que pais quieres buscar')
@@ -59,3 +61,4 @@ for persona in personas:
 
 
         print(f'Nombre: {nombre_de_pila}, Edad: {edad}')
+'''
