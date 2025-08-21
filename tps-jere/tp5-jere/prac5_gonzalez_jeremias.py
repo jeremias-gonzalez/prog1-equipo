@@ -10,7 +10,7 @@ for i in range(len(lineas)):
     lista.append(lineas[i].split("#"))
 # print(lista)
 
-        
+#---------------1)--------------------        
 # for i in lineas:
 #     localidades.append(i.split("#")[3])
 # print(localidades)
@@ -25,6 +25,7 @@ for i in range(len(lineas)):
 
 # print(cantidadPersonas(localidades))
 
+#-----------------------------2)-------------------------------------------
 # def deudaAcumulada1():
 #     total = 0
     
