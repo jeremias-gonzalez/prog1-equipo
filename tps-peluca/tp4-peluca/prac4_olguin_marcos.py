@@ -20,7 +20,7 @@ personas = [
     "Hollyanne Mottley,United States,05-01-1996",
     "Ambrosio Cadore,Norway,09-12-2002"
 ]
-
+'''
 # 1) La cantidad de personas de Argentina.
 buscador = 'Argentina'
 def contador_personas(texto):
@@ -43,7 +43,7 @@ def contador_personas(texto):
          argentinos +=1
     return argentinos
 print(f'La cantidad de personas de ese pais es: {contador_personas(personas)}')
-
+'''
 # 3) Los nombres de pila y las edades de las personas cuyo apellido comience con una letra solicitada al usuario.
 letra_apellido = input("Ingrese la primera letra del apellido: ")
 for persona in personas:
