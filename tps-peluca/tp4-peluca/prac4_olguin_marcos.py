@@ -22,27 +22,27 @@ personas = [
 ]
 
 # 1) La cantidad de personas de Argentina.
+buscador = 'Argentina'
 def contador_personas(texto):
     argentinos = 0 
     for persona in texto:
         datos_persona = persona.split(",")
-        if datos_persona[1] == 'Argentina':
+        if datos_persona[1] == buscador:
          argentinos +=1
     return argentinos
 print(f'La cantidad de Argentinos es: {contador_personas(personas)}')
 
-'''
-# La cantidad de personas de un país ingresado por el usuario.
+# 2) La cantidad de personas de un país ingresado por el usuario.
 
 buscador = input ('Que pais quieres buscar')
-gente = 0 
-for persona in personas:
-    datos_persona = persona.split(",")
-    if datos_persona[1] == buscador:
-        gente +=1
-
-print(f'La cantidad de personas de ese pais es: {gente}')
-
+def contador_personas(texto):
+    argentinos = 0 
+    for persona in texto:
+        datos_persona = persona.split(",")
+        if datos_persona[1] == buscador:
+         argentinos +=1
+    return argentinos
+print(f'La cantidad de personas de ese pais es: {contador_personas(personas)}')
 
 # 3) Los nombres de pila y las edades de las personas cuyo apellido comience con una letra solicitada al usuario.
 letra_apellido = input("Ingrese la primera letra del apellido: ")
@@ -61,4 +61,3 @@ for persona in personas:
 
 
         print(f'Nombre: {nombre_de_pila}, Edad: {edad}')
-'''
