@@ -1,4 +1,4 @@
-from datetime import datetime
+
 personas = [
     "Vikki Tewkesbury,France,30-01-2000",
     "Virgie Brach,France,04-06-1994",
@@ -54,30 +54,19 @@ pais=[]
 # print(cantidadPersonas(mensaje=""))
 # return print("La cantidad de personas de Argentina es", contador)
                   
-def inicialApellido(nombre="", inicial="", calculo=0):
-    inicial = input("Ingrese una inicial de apellido: ").strip().upper()
+def inicialApellido (nombre,inicial,calculo):
+    
+     inicial = input("Ingrese una inicial de apellido: ").upper()
+     for i in personas:
+         p = i.split(",")
+         nombre = p[0].split(" ")
+         edad = p[2].split("-")
+         calculo = 2025 - int(edad[2]) 
+         if nombre[1].startswith(inicial):
+             mensaje=print(f"{nombre[0]} tiene años {calculo}")
+     return mensaje
 
-    for i in personas:
-        p = i.split(",")
-        nombre_completo = p[0].split()
-        fecha_nacimiento = p[2]
-        
-        if len(nombre_completo) < 2:
-            continue
-
-        apellido = nombre_completo[1]
-
-        if apellido.upper().startswith(inicial):
-        
-            dia, mes, año = map(int, fecha_nacimiento.split("-"))
-            fecha_nac = datetime(año, mes, dia)
-            hoy = datetime(2025, 8, 21)
-            edad = hoy.year - fecha_nac.year - ((hoy.month, hoy.day) < (fecha_nac.month, fecha_nac.day))
-
-            print(f"{nombre_completo[0]} tiene {edad} años")
-
-
-print(inicialApellido())
+print(inicialApellido(nombre="", inicial="", calculo=0))
 
 
 
