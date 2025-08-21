@@ -4,11 +4,13 @@ with open("tps-jere/tp5-jere/clientes.txt") as f:
      lineas = f.readlines()
 
 localidades=[]
-        
+lista=[]
 for i in range(len(lineas)):
     lineas[i] = lineas[i].strip()
-    
+    lista.append(lineas[i].split("#"))
+# print(lista)
 
+        
 # for i in lineas:
 #     localidades.append(i.split("#")[3])
 # print(localidades)
@@ -23,6 +25,26 @@ for i in range(len(lineas)):
 
 # print(cantidadPersonas(localidades))
 
-def deudaAcumulada():
-    total = 0
-    monto=input(int("Ingresa un monto:"))
+# def deudaAcumulada1():
+#     total = 0
+    
+#     for i in lista:
+#         posicion = int(i[2])
+#         if posicion > 90000:
+#             total += posicion
+           
+#     return print(f"El total de deuda acumulada de los clientes que deben más de 90.000 pesos es {total} ")
+
+# deudaAcumulada1()
+
+# def deudaAcumulada2():
+#     total = 0
+   
+#     for i in lista:
+#         posicion = int(i[2])
+#         if posicion < 40000:
+#             total += posicion
+          
+#     return print(f"El total de deuda acumulada de los clientes que deben más de 40.000 pesos es {total} ")
+
+# deudaAcumulada2()
