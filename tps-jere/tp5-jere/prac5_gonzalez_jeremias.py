@@ -1,7 +1,7 @@
 
-with open("tps-jere/tp5-jere/clientes.txt") as f:
+with open("tps-jere/tp5-jere/clientes.txt") as clientes:
     # Guardar cada línea en una lista, quitando saltos de línea
-     lineas = f.readlines()
+     lineas = clientes.readlines()
 
 localidades=[]
 lista=[]
@@ -49,3 +49,5 @@ for i in range(len(lineas)):
 #     return print(f"El total de deuda acumulada de los clientes que deben más de 40.000 pesos es {total} ")
 
 # deudaAcumulada2()
+#-----------------------------3)------------------------------
+
