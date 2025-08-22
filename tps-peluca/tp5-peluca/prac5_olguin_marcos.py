@@ -29,3 +29,13 @@ def cantidad_clientes(localidad):
 
 buscador = input("Ingrese la localidad: ")
 print (f"La cantidad de clientes en la localidad especificada es: {cantidad_clientes(buscador)})")
+
+def cantidad_clientes(localidad):
+    contador = 0
+    for persona in personas:
+        if persona[3] == localidad:
+            contador += 1
+    return contador
+
+buscador = input("Ingrese la localidad: ")
+print (f"La cantidad de clientes en la localidad especificada es: {cantidad_clientes(buscador)})")
