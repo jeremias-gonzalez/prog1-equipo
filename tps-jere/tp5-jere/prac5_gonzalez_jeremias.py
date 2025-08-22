@@ -7,7 +7,7 @@ localidades=[]
         
 for i in range(len(lineas)):
     lineas[i] = lineas[i].strip()
-    
+    print(lineas[i])
 
 # for i in lineas:
 #     localidades.append(i.split("#")[3])
