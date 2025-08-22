@@ -5,7 +5,7 @@ with open ('tps-peluca/tp5-peluca/clientes.txt', 'r', encoding="utf-8") as archi
         dni, nombre, deuda, localidad = linea.strip().split('#')
         personas.append((dni, nombre, deuda, localidad))
 
-print (personas)
+
 
 # 1) La cantidad de clientes de ... (localidad literal y variable)
 def cantidad_clientes(localidad):
@@ -18,8 +18,6 @@ def cantidad_clientes(localidad):
 print (f"La cantidad de clientes en la localidad especificada es: {cantidad_clientes('Villa María')}")
 
 
-
-
 def cantidad_clientes(localidad):
     contador = 0
     for persona in personas:
@@ -28,4 +26,36 @@ def cantidad_clientes(localidad):
     return contador
 
 buscador = input("Ingrese la localidad: ")
-print (f"La cantidad de clientes en la localidad especificada es: {cantidad_clientes(buscador)})")
+print (f"La cantidad de clientes en la localidad especificada es: {cantidad_clientes(buscador)}")
+
+
+# 2) El total de deuda acumulada de los clientes que deben ... (mas o menos que)
+def deuda_acumulada_mayor(monto1):
+    
+    total = 0
+    
+    for persona in personas:
+        deuda = int(persona[2])
+        if deuda > monto1:
+            total += deuda
+    return total
+
+
+def deuda_acumulada_menor(monto2):
+    
+    total = 0
+    
+    for persona in personas:
+        deuda = int(persona[2])
+        if deuda < monto2:
+            total += deuda
+    return total
+pregunta_mayor = input('Ingrese el monto que deban mas de: ')
+pregunta_menor = input('Ingrese el monto que deban menos de: ')
+
+
+deuda_acumulada_mayor(int(pregunta_mayor))
+deuda_acumulada_menor(int(pregunta_menor))
+
+print(f"La deuda acumulada de los clientes que deben mas de {pregunta_mayor} es: {deuda_acumulada_mayor(int(pregunta_mayor))}")
+print(f"La deuda acumulada de los clientes que deben menos de {pregunta_menor} es: {deuda_acumulada_menor(int(pregunta_menor))}")
