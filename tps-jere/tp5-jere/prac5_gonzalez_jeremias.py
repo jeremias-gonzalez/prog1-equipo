@@ -10,26 +10,9 @@ for i in range(len(lineas)):
     lista.append(lineas[i].split("#"))
 # print(lista)
 
-def apellidos():
-      lista_apellidos=[]
-      lista_dni=[]
-     
-      lista_conjunta=[]
-      for i in lista:
-          lista_dni.append(i[0])
-          lista_conjunta.append((i[0],i[1].split(" ")[1]))
-          salida = lista_conjunta
-          if i[0] and i[1] in salida :
-               dni = int(i[0])
-               if dni > 40000000:
-                 lista_apellidos.append(i[1])
 
-      return lista_apellidos
-print(apellidos())
 
-#---------------1)--------------------        
-# for i in lineas:
-#     localidades.append(i.split("#")[3])
+
 # print(localidades)
 # def cantidadPersonas (localidades):
 #     contador = 0
@@ -68,3 +51,20 @@ print(apellidos())
 # deudaAcumulada2()
 #-----------------------------3)------------------------------
 
+# def apellidos():
+#       lista_apellidos=[]
+#       lista_dni=[]
+      
+#       lista_conjunta=[]
+#       for i in lista:
+#           lista_dni.append(i[0])
+#           lista_conjunta.append((i[0],i[1].split(" ")[1]))
+#       for dni in lista_conjunta:
+#            documento= int(dni[0])   
+#            if documento > 40000000:
+#                lista_apellidos.append(dni[1])
+#       with open("tps-jere/tp5-jere/apellidos.txt", "w") as apellidos:
+#           escribir = apellidos.write(f"Apellidos de los clientes con DNI mayor a 40000000: {" ".join(lista_apellidos)} ")
+
+#       return print(f"Apellidos de los clientes con DNI mayor a 40000000:{" ".join(lista_apellidos)} ")
+# print(apellidos())
