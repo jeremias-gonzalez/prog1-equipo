@@ -12,4 +12,3 @@ for k, v in Países_y_capitales.items():
 
 if buscar not in Países_y_capitales:
     print("¡Ese país no se encuentra en el diccionario!")
-    

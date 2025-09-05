@@ -4,11 +4,16 @@
 lista_numeros = []
 
 while True:
-    numeros = input('Ingrese un número: ')
+    numeros = int(input('Ingrese un número: '))
     lista_numeros.append(numeros)
-    pregunta = input('Desea ingresar otro número?(Si/No): ')
-
-    if pregunta.lower() == "No":
+    pregunta = input("¿Desea ingresar otro número? (Si/No): ").lower()
+    if pregunta == "no":
         break
+    elif pregunta != "si":
+        print("¡La respuesta debe ser 'Si' o 'No'!")
+
+for i in range(len(lista_numeros) // 2):
+    lista_numeros[i], lista_numeros[-(i+1)] = lista_numeros[-(i+1)], lista_numeros[i]
+print(lista_numeros)
 
     
