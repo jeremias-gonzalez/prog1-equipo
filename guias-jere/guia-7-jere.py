@@ -35,4 +35,5 @@ def funcion3 (cadena):
         elif letra == "Ñ":
             contador5 += 1
     return (contador, contador1, contador2, contador3, contador4, contador5)
+
 print(funcion3(cadena))
