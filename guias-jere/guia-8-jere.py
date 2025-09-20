@@ -32,13 +32,15 @@ print(contarSubCadena(frase, 'luna', ignorarMayusculas=False))
 def promedio (*args,sinNegativos=False):
     suma=0
     longitud = len(args)
+    
+                
     for i in args :
-        suma += i
-        if i > 0 and sinNegativos == True :
-            print(suma)
-            resultado = (suma/longitud)
-        else: 
-            resultado = int(suma/longitud)
+         suma += i
+         numeros_p = suma
+         if i > numeros_p and sinNegativos == True:           
+                 resultado = (suma/longitud)
+         else: 
+          resultado = int(suma/longitud)      
     return resultado
 print(promedio(121,65,-88,34,-9,27))
 print(promedio(121,65,-88,34,-9,27, sinNegativos=True)) # 247/4=61.75
