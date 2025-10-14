@@ -1,4 +1,6 @@
-"""
+t1 = (10,)
+print(type(t1))
+
 tupla_nombres = ("Juan", "Zoe", "Andrea", "Marcelo")
 a, b, c, d = tupla_nombres
 print(a, b, c, d)
@@ -8,8 +10,8 @@ def bar():
     return 29
 
 print(bar())
-"""
-"""
+
+
 #funcion parametro
 def raya():
     for x in range(20): 
@@ -28,12 +30,11 @@ raya(10, "+") # argumentos: 10, "+" # 10 reemplaza a cantidad y + a caracter
 raya(30, "$") # argumentos: 30, "$"
 
 # Salida:
- Las 3 comillas son otra forma de comentario para multilíneas
---------------------
-++++++++++
-$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-"""
-"""
+# Las 3 comillas son otra forma de comentario para multilíneas
+#--------------------
+#++++++++++
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
 #Tipo: funcion procedimiento
 def saludo(nombre):
     print("Hola", nombre)
@@ -88,7 +89,7 @@ def foo1(a, b, *args, n1="ene uno", **kwargs):
     print(a, b, args, n1, kwargs)
 foo1(1, 2, 3, 4, 5, xX="equisequis", n1="<nuevo ene uno>", nN="algo")
 foo1("a", "b") # los únicos argumentos obligatorios son los que corresponde a parámetros posicionales
-"""
+
 # variante posicionales exclusivos (positional-only arguments)
 def foo3(a, b, /, c): 
     print('foo3')
@@ -96,3 +97,4 @@ def foo3(a, b, /, c):
     #de los que quedan a la izquierda
     print(a, b, c)
 foo3(1, 2, c=3) # solamente funciona si NO se pone a= y b=
+"""

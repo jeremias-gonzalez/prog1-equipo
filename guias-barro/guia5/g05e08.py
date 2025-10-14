@@ -9,9 +9,9 @@ lista_vocales = ["a", "e", "i", "o", "u"]
 lista_frase = frase.split(" ")
 juntar = " ".join(lista_frase)
 
-for vocal in lista_vocales:
+for v in lista_vocales:
     contador = 0
     for letra in frase:
-        if letra == vocal:
+        if letra == v:
             contador += 1
-    print(f'La vocal {vocal} aparece {contador} veces')
+    print(f'La vocal {v} aparece {contador} veces')
