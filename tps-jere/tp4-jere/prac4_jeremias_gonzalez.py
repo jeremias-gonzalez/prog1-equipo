@@ -24,34 +24,37 @@ personas = [
 
 pais=[]
 # ingresar = input("Ingrese un pais: ")
-#mediante una funcion obtener la cantidad de personas de Argentina
 
-# def cantidadPersonas (mensaje=""):
-   
-#     contador = 0
-#     print("Opciones: ['Germany', 'United States', 'Norway', 'France']")
-#     ingresar = input("Ingrese otro país además de Argentina: ")
+
+def cantidadPersonas (mensaje=""):
+     acumulador = 0  
     
-#     for i in personas :
+    
+     for i in personas :
         
-#         p = i.split(",")
-#         pais.append(p[1])
-#         pass
+         p = i.split(",")
+         pais.append(p[1])
+         pass
 
-#     # for x in pais:
-#     #       if x == "Argentina":
-#     #        pass
-#     #        contador += 1
-#     if ingresar in pais:
-#              for paisx in pais:
-#                  if ingresar == paisx:
-#                   contador += 1 
+     for x in pais:
+            if x == "Argentina":
+             pass
+             acumulador += 1
+     print("La cantidad de personas de Argentina es", acumulador)
+     
+     contador = 0
+     print("Opciones: ['Germany', 'United States', 'Norway', 'France']")
+     ingresar = input("Ingrese otro país además de Argentina: ")
+     if ingresar in pais:
+              for paisx in pais:
+                  if ingresar == paisx and ingresar != "Argentina":
+                   contador += 1 
          
-#              mensaje = print(f"La cantidad de personas en {ingresar} es {contador}")
-#     else:
-#         print("Opción inválida")
-#     return mensaje
-# print(cantidadPersonas(mensaje=""))
+              mensaje = print(f"La cantidad de personas en {ingresar} es {contador}")
+     else:
+         print("Opción inválida")
+     return mensaje
+print(cantidadPersonas(mensaje=""))
 # return print("La cantidad de personas de Argentina es", contador)
                   
 def inicialApellido (nombre,inicial,calculo):
