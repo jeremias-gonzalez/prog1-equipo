@@ -7,7 +7,6 @@ def get_connection():
     try:
         connection = mysql.connector.connect(
             host="143.198.156.171",
-            port='3306',
             database='db_gonzalezj', 
             user='BD2021',
             password='BD2021itec' 
