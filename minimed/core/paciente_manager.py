@@ -22,6 +22,6 @@ class PacienteManager:
         return citas
 
     def agendar_nueva_cita(self, datos):
-        """(TAREA  DE BARROSO)."""
+        """LOGICA SQL INSERT MARCOS"""
         print("PENDIENTE: Lógica de agendamiento (INSERT en Turnos).")
         pass

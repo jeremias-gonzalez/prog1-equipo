@@ -43,13 +43,16 @@ class ManagerBase:
     
     
     def insert(self, datos):
+        """LOGICA SQL INSERT MARCOS"""
         print(f"PENDIENTE: Insertar en {self.tabla}")
         return False
 
     def update(self, id_val, datos):
+        """LOGICA SQL UPDATE BARROSO"""
         print(f"PENDIENTE: Actualizar {self.tabla}")
         return False
 
     def delete(self, id_val):
+        """LOGICA SQL DELETE NACHO"""
         print(f"PENDIENTE: Eliminar de {self.tabla}")
         return False

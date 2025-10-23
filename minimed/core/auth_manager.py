@@ -18,11 +18,12 @@ def registrar_paciente():
         return False
 
     nuevo_paciente = Paciente(dni, nombre, apellido, telefono)
-    
+    """LOGICA SQL INSERT MARCOS"""
     print(f"Registro exitoso para {nuevo_paciente.get_nombre_completo()} (PENDIENTE de guardar en BD).")
     return True
 
 def login_paciente():
+    """Lógica para autenticar un paciente (PENDIENTE READ)."""
     dni = input("DNI de paciente: ")
     password = input("Contraseña: ")
     
