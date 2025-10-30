@@ -33,7 +33,7 @@ class AdminManager:
             P_PACIENTE.apellido AS apellido_paciente,
             P_MEDICO.nombre AS nombre_medico, 
             P_MEDICO.apellido AS apellido_medico,
-            ME.especializacion  -- <<--- CORREGIDO: Usando el alias correcto ME
+            ME.especializacion  
         FROM Turnos AS T
         JOIN Paciente AS PA ON T.id_paciente = PA.id
         JOIN Persona AS P_PACIENTE ON PA.id_persona = P_PACIENTE.id
