@@ -42,10 +42,37 @@ class ManagerBase:
         return cursor.fetchone()
     
     
-    def insert(self, datos):
-        """LOGICA SQL INSERT MARCOS"""
-        print(f"PENDIENTE: Insertar en {self.tabla}")
+def insert(self, datos):
+    if not self.conn:
         return False
+
+    try:
+        cursor = self.conn.cursor()
+
+        # Extrae los nombres de las columnas y los valores a insertar
+        columnas = ", ".join(datos.keys())
+        valores = tuple(datos.values())
+
+        # Crea una lista de "marcadores" (%s) para insertar de forma segura
+        marcadores = ", ".join(["%s"] * len(datos))
+
+        # Arma la consulta SQL final
+        consulta = f"INSERT INTO {self.tabla} ({columnas}) VALUES ({marcadores})"
+
+        # Ejecuta la consulta con los valores
+        cursor.execute(consulta, valores)
+        self.conn.commit()
+
+        # Obtiene el ID insertado (si la tabla tiene autoincrement)
+        id_insertado = cursor.lastrowid
+
+        cursor.close()
+        return id_insertado or True
+
+    except Exception as e:
+        print(f"❌ Error al insertar en {self.tabla}: {e}")
+        return False
+
 
     def update(self, id_val, datos):
         """LOGICA SQL UPDATE BARROSO"""
