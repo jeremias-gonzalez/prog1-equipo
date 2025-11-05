@@ -63,7 +63,7 @@ def insert(self, datos):
         cursor.execute(consulta, valores)
         self.conn.commit()
 
-        # Obtiene el ID insertado (si la tabla tiene autoincrement)
+        # Obtiene el ID insertado 
         id_insertado = cursor.lastrowid
 
         cursor.close()
