@@ -18,7 +18,22 @@ def registrar_paciente():
         return False
 
     nuevo_paciente = Paciente(dni, nombre, apellido, telefono)
-    """LOGICA SQL INSERT MARCOS"""
+   
+    # Inserta los datos en la tabla Persona
+    datos_persona = {
+        "dni": dni,
+        "nombre": nombre,
+        "apellido": apellido,
+        "telefono": telefono,
+        "password": password
+    }
+
+    insertado = persona_db.insert(datos_persona)
+
+    if not insertado:
+        print("❌ Error al registrar el paciente en la base de datos.")
+        return False
+
     print(f"Registro exitoso para {nuevo_paciente.get_nombre_completo()} (PENDIENTE de guardar en BD).")
     return True
 
