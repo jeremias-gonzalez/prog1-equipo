@@ -7,9 +7,10 @@
 #Para ello, primero cargar cada palabra en una lista y luego obtener la solicitada.
 #Usar dos funciones.
 texto = "Quiero comer manzanas, solamente manzanas."
-coma = texto.replace(",", "")
-punto = coma.replace(".", "")
-separar = punto.split(" ")
+def obtener_palabras():
+    coma = texto.replace(",", "")
+    punto = coma.replace(".", "")   
+    separar = punto.split(" ")
 
 def palabra():
     palabras = []

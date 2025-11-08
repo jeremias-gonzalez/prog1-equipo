@@ -1,55 +1,65 @@
 # core/manager_base.py
 
-from database.connection import get_connection
+def update(self, id_val, datos):
+    """
+    Actualiza un registro en la tabla basado en su ID.
+    'datos' es un diccionario con las columnas y los nuevos valores.
+    """
+    if not self.conn:
+        print("⚠️ No hay conexión a la base de datos.")
+        return False
+    # En caso de que esté vacío el diccionario no se puede hacer nada.
+    if not datos:
+        print("⚠️ No se proporcionaron datos para actualizar.")
+        return False
 
-class ManagerBase:
-    
-    def __init__(self, tabla):
-        self.tabla = tabla
-        self.conn = get_connection() 
+    cursor = None
+    try:
+        cursor = self.conn.cursor()
 
-    def get_by_id(self, id_val):
-        if not self.conn: return None
-        
-        cursor = self.conn.cursor(dictionary=True)
-        query = f"SELECT * FROM {self.tabla} WHERE id = %s"
-        cursor.execute(query, (id_val,))
-        
-        resultado = cursor.fetchone() 
-        cursor.close()
-        return resultado
-        
-    def get_all(self):
-        if not self.conn: return []
-        
-        cursor = self.conn.cursor(dictionary=True)
-        query = f"SELECT * FROM {self.tabla}"
-        cursor.execute(query)
-        
-        lista_resultados = cursor.fetchall()
-        cursor.close()
-        return lista_resultados
-    
-    def get_by_dni(self, dni_val):
-        if self.tabla != "Persona":
-            print("⚠️ Método get_by_dni debe usarse con la tabla Persona o Paciente.")
-            return None
+        #Parte SET
+        set_parts = [f"{key} = %s" for key in datos.keys()]
+        set_clause = ", ".join(set_parts)
             
-        if not self.conn: return None
-        cursor = self.conn.cursor(dictionary=True)
-        query = f"SELECT * FROM {self.tabla} WHERE dni = %s"
-        cursor.execute(query, (dni_val,))
-        return cursor.fetchone()
-    
-    
-    def insert(self, datos):
-        print(f"PENDIENTE: Insertar en {self.tabla}")
-        return False
+        # Lista de valores en orden
+        valores = list(datos.values())
+        valores.append(id_val)
 
-    def update(self, id_val, datos):
-        print(f"PENDIENTE: Actualizar {self.tabla}")
-        return False
+        query = f"UPDATE {self.tabla} SET {set_clause} WHERE id = %s"
+            
+        cursor.execute(query, tuple(valores))
+        self.conn.commit()
+            
+        if cursor.rowcount > 0:
+            print(f"✅ Registro actualizado exitosamente en la tabla '{self.tabla}'.")
+            return True
+        else:
+            print(f"⚠️ No se encontró ningún registro con el ID {id_val} para actualizar.")
+            return False
 
-    def delete(self, id_val):
-        print(f"PENDIENTE: Eliminar de {self.tabla}")
+    except Exception as e:
+        print(f"❌ Error al actualizar en la tabla '{self.tabla}': {e}")
+        self.conn.rollback() # Revierte los cambios si hubo un error
         return False
+    finally:
+        if cursor:
+            cursor.close()
+
+def get_one_by_field(self, field_name, field_value):
+    """
+    Busca y devuelve un ÚNICO registro basado en un campo específico.
+    """
+    if not self.conn: return None
+        
+    cursor = self.conn.cursor(dictionary=True)
+    query = f"SELECT * FROM {self.tabla} WHERE {field_name} = %s"
+        
+    try:
+        cursor.execute(query, (field_value,))
+        resultado = cursor.fetchone() 
+        return resultado
+    except Exception as e:
+        print(f"❌ Error al buscar por campo '{field_name}': {e}")
+        return None
+    finally:
+        cursor.close()
