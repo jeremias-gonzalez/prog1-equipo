@@ -29,3 +29,4 @@ def start_paciente_menu(paciente_data):
         
         else:
             print("Opción no válida. Intente de nuevo.")
+#Fin del ciclo
