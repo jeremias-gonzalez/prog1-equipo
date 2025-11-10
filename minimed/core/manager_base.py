@@ -80,6 +80,24 @@ def insert(self, datos):
         return False
 
     def delete(self, id_val):
-        """LOGICA SQL DELETE NACHO"""
-        print(f"PENDIENTE: Eliminar de {self.tabla}")
+        connection = get_connection()
+        if connection:
+            try:
+                cursor = connection.cursor()
+                sql = "DELETE FROM pacientes WHERE id_paciente = %s"
+                cursor.execute(sql, (id_val,))
+                connection.commit()
+                if cursor.rowcount > 0:
+                    print(f"Paciente con ID {id_val} eliminado exitosamente.")
+                    return True
+                else:
+                    print(f"No se encontró ningún paciente con ID {id_val}.")
+                    return False
+            except mysql.connector.Error as err:
+                print(f"Error al eliminar paciente: {err}")
+                connection.rollback() # Deshacer cambios si hay un error
+                return False
+            finally:
+                cursor.close()
+                connection.close()
         return False
