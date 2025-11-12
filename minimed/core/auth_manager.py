@@ -1,11 +1,5 @@
-# core/auth_manager.py
-# VERSIÓN CORREGIDA (Resuelve Problema 2 y 3)
-
 from .manager_base import ManagerBase 
-# Se quita la importación de 'models' que no se usaba
 
-# --- Definición de los managers ---
-# (Se mueven aquí para ser usados por todas las funciones)
 persona_db = ManagerBase(tabla="Persona") 
 admin_db = ManagerBase(tabla="admin")
 paciente_db = ManagerBase(tabla="Paciente")

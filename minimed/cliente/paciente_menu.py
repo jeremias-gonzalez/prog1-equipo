@@ -2,8 +2,8 @@ from core.paciente_manager import PacienteManager
 
 def mostrar_menu_paciente():
     print("\n--- MENÚ PACIENTE ---")
-    print("1. Ver mis citas agendadas")
-    print("2. Agendar nueva cita")
+    print("1. Ver mis turnos ")
+    print("2. Agendar nuevo turno")
     print("3. Actualizar mis datos")
     print("4. Cerrar Sesión")
     return input("Seleccione una opción: ")
@@ -17,11 +17,11 @@ def start_paciente_menu(paciente_data):
         opcion = mostrar_menu_paciente()
 
         if opcion == '1':
-            manager.ver_mis_citas() 
+            manager.ver_mis_turnos() 
         
         elif opcion == '2':
       
-            manager.agendar_nueva_cita()
+            manager.agendar_turno()
         
         elif opcion == '3':
             manager.actualizar_mis_datos()

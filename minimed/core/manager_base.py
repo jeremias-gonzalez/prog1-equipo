@@ -73,10 +73,9 @@ class ManagerBase:
         except Exception as e:
             print(f"Error al construir el INSERT en {self.tabla}: {e}")
             return False
-
     def update(self, id_val, datos):
         if not datos:
-            print("No hay datos para actualizar.")
+            print("UPDATE: No hay datos para actualizar.")
             return False
             
         try:
@@ -84,19 +83,18 @@ class ManagerBase:
             valores = tuple(datos.values()) + (id_val,)
             
             query = f"UPDATE {self.tabla} SET {set_clause} WHERE id = ?"
-            
             filas_afectadas = self._execute_query(query, valores)
+            
             if filas_afectadas is not None and filas_afectadas > 0:
                 print(f"Registro {id_val} en {self.tabla} actualizado con éxito.")
                 return True
             else:
-                print(f"No se actualizó ningún registro en {self.tabla} (ID: {id_val}).")
+                print(f"ℹ️ No se actualizó ningún registro en {self.tabla} (ID: {id_val}).")
                 return False
                 
         except Exception as e:
             print(f"Error al construir el UPDATE en {self.tabla}: {e}")
             return False
-
     def delete(self, id_val):
         query = f"DELETE FROM {self.tabla} WHERE id = ?"
         

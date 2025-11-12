@@ -16,4 +16,4 @@ class Turno:
             'fecha': self.__fecha, 
             'hora': self.__hora,
             'medico_id': self.__id_medico
-        }
+        } 

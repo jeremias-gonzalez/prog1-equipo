@@ -37,7 +37,7 @@ def run_app():
             registrar_paciente()
 
         elif opcion == '4':
-            print("\nGracias por usar MiniMed. ¡Hasta pronto!")
+            print("\nGracias por usar MiniMed. Nos vemos !")
             break
             
         else:

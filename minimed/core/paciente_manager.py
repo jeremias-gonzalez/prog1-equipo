@@ -11,7 +11,6 @@ class PacienteManager:
         self.medico_db = ManagerBase(tabla="Medico")
 
     def _get_paciente_id(self):
-        """Helper para obtener el ID de Paciente a partir del DNI."""
         try:
             info_persona = self.persona_db.get_by_dni(self.paciente_dni)
             if not info_persona:
@@ -30,11 +29,8 @@ class PacienteManager:
             print(f"Error obteniendo ID del paciente: {e}")
             return None
 
-    def _listar_medicos(self):
-        """Muestra una lista de médicos disponibles."""
+    def _listar_medico(self):
         print("\n--- Médicos Disponibles ---")
-        
-  
         conn = self.medico_db.conn
         if not conn:
             print("Error de conexión al listar médicos.")
@@ -74,7 +70,7 @@ class PacienteManager:
         finally:
             cursor.close()
 
-    def ver_mis_citas(self):
+    def ver_mis_turnos(self):
         
         print(f"\n--- Mis Turnos Agendados ---")
         
@@ -127,18 +123,18 @@ class PacienteManager:
         return citas
 
 
-    def agendar_nueva_cita(self):
+    def agendar_turno(self):
         
-        print("\n--- Agendar Nueva Cita ---")
+        print("\n--- Agendar Nuevo Turno ---")
         
         
         id_paciente = self._get_paciente_id()
         if not id_paciente:
             return
 
-        medicos_disponibles = self._listar_medicos()
+        medicos_disponibles = self._listar_medico()
         if not medicos_disponibles:
-            print("No es posible agendar una cita en este momento.")
+            print("No es posible agendar un turno en este momento.")
             return
 
         id_medico_input = input("\nIngrese el ID del médico seleccionado: ").strip()
@@ -150,7 +146,7 @@ class PacienteManager:
                 break
         
         if not medico_seleccionado:
-            print("❌ Error: ID de médico no válido.")
+            print("Error: ID de médico no válido.")
             return
             
         print(f"Ha seleccionado a: Dr/a. {medico_seleccionado['apellido']} ({medico_seleccionado['especializacion']})")
@@ -189,30 +185,27 @@ class PacienteManager:
             print(f"Fecha: {fecha_input} Hora: {hora_input}")
             print(f"Médico: Dr/a. {medico_seleccionado['apellido']}")
         else:
-            print("❌ Error: No se pudo agendar el turno.")
+            print("Error: No se pudo agendar el turno.")
 
 
     def actualizar_mis_datos(self):
-
         print(f"\n--- Actualizar mis datos (Paciente {self.paciente_dni}) ---")
         print("Deje el campo vacío y presione ENTER para no cambiar el dato.")
 
         try:
-          
             info_persona = self.persona_db.get_by_dni(self.paciente_dni)
             if not info_persona:
                 print("Error: No se encontraron los datos de la persona.")
                 return
             id_persona = info_persona['id']
-            
-        
-            print(f"Nombre actual ({info_persona.get('nombre')})")
+            print(f"Nombre actual ({info_persona['nombre']})")
             nuevo_nombre = input("Nuevo Nombre: ").strip()
             
-            print(f"Apellido actual ({info_persona.get('apellido')})")
+            print(f"Apellido actual ({info_persona['apellido']})")
             nuevo_apellido = input("Nuevo Apellido: ").strip()
 
-            print(f"Teléfono actual ({info_persona.get('telefono', 'N/A')})")
+            telefono_actual = info_persona['telefono'] or 'N/A'
+            print(f"Teléfono actual ({telefono_actual})")
             nuevo_telefono = input("Nuevo Teléfono: ").strip()
             
             datos_persona_actualizar = {}
@@ -222,14 +215,14 @@ class PacienteManager:
                 datos_persona_actualizar['apellido'] = nuevo_apellido
             if nuevo_telefono:
                 datos_persona_actualizar['telefono'] = nuevo_telefono
-    
+            
             if datos_persona_actualizar:
                 if self.persona_db.update(id_persona, datos_persona_actualizar):
                     print("Datos personales actualizados.")
                 else:
                     print("Error al actualizar datos personales.")
             else:
-                print("No se ingresó ningún dato nuevo. No se realizó ninguna actualización.")
+                print("ℹNo se ingresó ningún dato nuevo. No se realizó ninguna actualización.")
             
         except Exception as e:
             print(f"Ocurrió un error inesperado durante la actualización: {e}")

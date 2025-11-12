@@ -15,8 +15,6 @@ class AdminManager:
         if not conn:
             print("Error de conexión al listar médicos.")
             return
-        
-    
         cursor = conn.cursor()
         query = """
         SELECT 
@@ -29,23 +27,17 @@ class AdminManager:
         JOIN Persona AS PE ON ME.id_persona = PE.id
         ORDER BY PE.apellido
         """
-        
         try:
             cursor.execute(query)
-            medicos = cursor.fetchall()
-            
+            medicos = cursor.fetchall() 
             if not medicos:
                 print("No hay médicos registrados en el sistema.")
                 return
-            
             print(f"Total de médicos: {len(medicos)}")
             print("ID | Apellido, Nombre (Especialización) | Matrícula")
             print("-" * 60)
-            
-            
             for medico in medicos:
                 print(f"{medico['id']} | {medico['apellido']}, {medico['nombre']} ({medico['especializacion']}) | {medico['matricula']}")
-            
         except Exception as e:
             print(f"Error al listar médicos: {e}")
         finally:
@@ -53,7 +45,6 @@ class AdminManager:
 
     
     def ver_turnos(self, fecha=None):
-        
         if fecha:
             titulo = f"Turnos por Fecha: {fecha}"
            
@@ -70,8 +61,7 @@ class AdminManager:
         if not conn: 
             print("Error de conexión.")
             return []
-
-   
+        
         cursor = conn.cursor()
      
         query = f"""
@@ -91,7 +81,7 @@ class AdminManager:
         {filtro_sql}
         ORDER BY T.fecha_turno DESC, T.hora ASC
         """
-        
+    
         try:
             cursor.execute(query, params)
             turnos = cursor.fetchall() 

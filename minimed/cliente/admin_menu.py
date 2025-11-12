@@ -17,7 +17,7 @@ def start_admin_menu(admin_data):
         opcion = mostrar_menu_admin()
 
         if opcion == '1':
-            manager.listar_medicos()
+            manager.listar_medico()
             
         elif opcion == '2':
        
@@ -26,10 +26,10 @@ def start_admin_menu(admin_data):
             
             if fecha_input:
                 
-                manager.ver_reporte_citas_del_dia(fecha=fecha_input)
+                manager.ver_turnos(fecha=fecha_input)
             else:
             
-                manager.ver_reporte_citas_del_dia(fecha=None) 
+                manager.ver_turnos(fecha=None) 
 
         elif opcion == '3':
             break
