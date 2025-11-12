@@ -1,62 +1,88 @@
+# core/auth_manager.py
+# VERSIÓN CORREGIDA (Resuelve Problema 2 y 3)
 
 from .manager_base import ManagerBase 
-from models import Paciente 
+# Se quita la importación de 'models' que no se usaba
 
+# --- Definición de los managers ---
+# (Se mueven aquí para ser usados por todas las funciones)
 persona_db = ManagerBase(tabla="Persona") 
 admin_db = ManagerBase(tabla="admin")
+paciente_db = ManagerBase(tabla="Paciente")
+mutual_db = ManagerBase(tabla="Mutuales")
+
 
 def registrar_paciente():
-    print("\n--- INGRESE SUS DATOS DE REGISTRO ---")
-    dni = input("DNI (será su usuario): ")
-    nombre = input("Nombre: ")
-    apellido = input("Apellido: ")
-    telefono = input("Teléfono: ")
-    password = input("Contraseña: ")
+    print("\n--- INGRESE SUS DATOS PARA REGISTRARSE ---")
+    dni = input("DNI (será su usuario): ").strip()
+    nombre = input("Nombre: ").strip()
+    apellido = input("Apellido: ").strip()
+    telefono = input("Teléfono: ").strip()
     
+    if not dni or not nombre or not apellido:
+        print("Error: DNI, Nombre y Apellido no pueden estar vacíos.")
+        return False
+
     if persona_db.get_by_dni(dni):
         print("Error: Ya existe una persona registrada con ese DNI.")
         return False
 
-    nuevo_paciente = Paciente(dni, nombre, apellido, telefono)
-   
-    # Inserta los datos en la tabla Persona
     datos_persona = {
         "dni": dni,
         "nombre": nombre,
         "apellido": apellido,
-        "telefono": telefono,
-        "password": password
+        "telefono": telefono
+        
     }
+    
+    id_persona_insertada = persona_db.insert(datos_persona)
 
-    insertado = persona_db.insert(datos_persona)
-
-    if not insertado:
-        print("❌ Error al registrar el paciente en la base de datos.")
+    if not id_persona_insertada:
+        print("Error al registrar los datos personales.")
         return False
 
-    print(f"Registro exitoso para {nuevo_paciente.get_nombre_completo()} (PENDIENTE de guardar en BD).")
+    mutual_particular = mutual_db.get_one_by_field('nombre', 'Particular')
+    if not mutual_particular:
+        print("Error: No se encontró la mutual 'Particular' por defecto.")
+        return False
+        
+    id_mutual_default = mutual_particular['id']
+
+    datos_paciente = {
+        "id_persona": id_persona_insertada,
+        "id_mutual": id_mutual_default
+    }
+    
+    id_paciente_insertado = paciente_db.insert(datos_paciente)
+
+    if not id_paciente_insertado:
+        print("Error al registrar los datos del paciente.")
+        return False
+
+    print(f"¡Registro exitoso! Paciente {nombre} {apellido} (DNI: {dni}) creado.")
     return True
 
 def login_paciente():
-    """Lógica para autenticar un paciente (PENDIENTE READ)."""
-    dni = input("DNI de paciente: ")
-    password = input("Contraseña: ")
     
-    if dni == '111':
-        print("Login de Paciente simulado con éxito.")
+    dni = input("DNI de paciente: ").strip()
+    persona = persona_db.get_by_dni(dni)
+    
+    if persona:
+        print(f"Login de Paciente exitoso (DNI: {dni}).")
         return {"dni": dni, "rol": "paciente"} 
     
-    print("Login fallido. Usar '111' como DNI para prueba.")
+    print("Login fallido. El DNI no se encuentra registrado.")
     return None
 
 def login_admin():
-    """Lógica para autenticar un administrador (PENDIENTE READ)."""
-    user = input("Usuario Admin: ")
-    password = input("Contraseña: ")
+    user = input("Usuario Admin: ").strip()
+    password = input("Contraseña: ").strip()
     
-    if user == 'admin' and password == '1234':
-        print("Login de Administrador simulado con éxito.")
+    admin = admin_db.get_one_by_field('USER', user)
+    
+    if admin and admin['PASSWORD'] == password:
+        print(f"Login de Administrador exitoso (Usuario: {user}).")
         return {"user": user, "rol": "admin"}
     
-    print("Login fallido. Usar 'admin'/'1234' para prueba.")
+    print("Login fallido. Usuario o contraseña incorrectos.")
     return None

@@ -1,6 +1,4 @@
-# core/manager_base.py
-
-from database.connection import get_connection
+from database.connection import get_connection, close_connection
 
 class ManagerBase:
     
@@ -8,96 +6,104 @@ class ManagerBase:
         self.tabla = tabla
         self.conn = get_connection() 
 
+    def __del__(self):
+        close_connection(self.conn)
+
+    def _execute_query(self, query, params=(), fetch_one=False, fetch_all=False, commit=False):
+        if not self.conn:
+            print("Error: No hay conexión a la base de datos.")
+            return None
+        
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute(query, params)
+            
+            if commit:
+                self.conn.commit()
+                return cursor.lastrowid
+            
+            if fetch_one:
+                return cursor.fetchone()
+            
+            if fetch_all:
+                return cursor.fetchall()
+            
+            if not fetch_one and not fetch_all:
+                 self.conn.commit()
+                 return cursor.rowcount
+
+        except Exception as e:
+            print(f"Error al ejecutar consulta en {self.tabla}: {e}")
+            if commit:
+                self.conn.rollback()
+            return None
+        finally:
+            if 'cursor' in locals():
+                cursor.close()
+
     def get_by_id(self, id_val):
-        if not self.conn: return None
-        
-        cursor = self.conn.cursor(dictionary=True)
-        query = f"SELECT * FROM {self.tabla} WHERE id = %s"
-        cursor.execute(query, (id_val,))
-        
-        resultado = cursor.fetchone() 
-        cursor.close()
-        return resultado
+        query = f"SELECT * FROM {self.tabla} WHERE id = ?"
+        return self._execute_query(query, (id_val,), fetch_one=True)
         
     def get_all(self):
-        if not self.conn: return []
-        
-        cursor = self.conn.cursor(dictionary=True)
         query = f"SELECT * FROM {self.tabla}"
-        cursor.execute(query)
-        
-        lista_resultados = cursor.fetchall()
-        cursor.close()
-        return lista_resultados
+        return self._execute_query(query, fetch_all=True)
     
     def get_by_dni(self, dni_val):
         if self.tabla != "Persona":
-            print("⚠️ Método get_by_dni debe usarse con la tabla Persona o Paciente.")
+            print(f"Método get_by_dni solo debe usarse con la tabla Persona, no {self.tabla}.")
             return None
+        query = f"SELECT * FROM {self.tabla} WHERE dni = ?"
+        return self._execute_query(query, (dni_val,), fetch_one=True)
+    
+    def get_one_by_field(self, field_name, field_value):
+        query = f"SELECT * FROM {self.tabla} WHERE {field_name} = ?"
+        return self._execute_query(query, (field_value,), fetch_one=True)
+
+    def insert(self, datos):
+        try:
+            columnas = ", ".join(datos.keys())
+            valores = tuple(datos.values())
+            marcadores = ", ".join(["?"] * len(datos))
             
-        if not self.conn: return None
-        cursor = self.conn.cursor(dictionary=True)
-        query = f"SELECT * FROM {self.tabla} WHERE dni = %s"
-        cursor.execute(query, (dni_val,))
-        return cursor.fetchone()
-    
-    
-def insert(self, datos):
-    if not self.conn:
-        return False
-
-    try:
-        cursor = self.conn.cursor()
-
-        # Extrae los nombres de las columnas y los valores a insertar
-        columnas = ", ".join(datos.keys())
-        valores = tuple(datos.values())
-
-        # Crea una lista de "marcadores" (%s) para insertar de forma segura
-        marcadores = ", ".join(["%s"] * len(datos))
-
-        # Arma la consulta SQL final
-        consulta = f"INSERT INTO {self.tabla} ({columnas}) VALUES ({marcadores})"
-
-        # Ejecuta la consulta con los valores
-        cursor.execute(consulta, valores)
-        self.conn.commit()
-
-        # Obtiene el ID insertado 
-        id_insertado = cursor.lastrowid
-
-        cursor.close()
-        return id_insertado or True
-
-    except Exception as e:
-        print(f"❌ Error al insertar en {self.tabla}: {e}")
-        return False
-
+            query = f"INSERT INTO {self.tabla} ({columnas}) VALUES ({marcadores})"
+            
+            return self._execute_query(query, valores, commit=True)
+            
+        except Exception as e:
+            print(f"Error al construir el INSERT en {self.tabla}: {e}")
+            return False
 
     def update(self, id_val, datos):
-        """LOGICA SQL UPDATE BARROSO"""
-        print(f"PENDIENTE: Actualizar {self.tabla}")
-        return False
+        if not datos:
+            print("No hay datos para actualizar.")
+            return False
+            
+        try:
+            set_clause = ", ".join([f"{key} = ?" for key in datos.keys()])
+            valores = tuple(datos.values()) + (id_val,)
+            
+            query = f"UPDATE {self.tabla} SET {set_clause} WHERE id = ?"
+            
+            filas_afectadas = self._execute_query(query, valores)
+            if filas_afectadas is not None and filas_afectadas > 0:
+                print(f"Registro {id_val} en {self.tabla} actualizado con éxito.")
+                return True
+            else:
+                print(f"No se actualizó ningún registro en {self.tabla} (ID: {id_val}).")
+                return False
+                
+        except Exception as e:
+            print(f"Error al construir el UPDATE en {self.tabla}: {e}")
+            return False
 
     def delete(self, id_val):
-        connection = get_connection()
-        if connection:
-            try:
-                cursor = connection.cursor()
-                sql = "DELETE FROM pacientes WHERE id_paciente = %s"
-                cursor.execute(sql, (id_val,))
-                connection.commit()
-                if cursor.rowcount > 0:
-                    print(f"Paciente con ID {id_val} eliminado exitosamente.")
-                    return True
-                else:
-                    print(f"No se encontró ningún paciente con ID {id_val}.")
-                    return False
-            except mysql.connector.Error as err:
-                print(f"Error al eliminar paciente: {err}")
-                connection.rollback() # Deshacer cambios si hay un error
-                return False
-            finally:
-                cursor.close()
-                connection.close()
-        return False
+        query = f"DELETE FROM {self.tabla} WHERE id = ?"
+        
+        filas_afectadas = self._execute_query(query, (id_val,))
+        if filas_afectadas is not None and filas_afectadas > 0:
+            print(f"Registro {id_val} eliminado de {self.tabla} con éxito.")
+            return True
+        else:
+            print(f"No se eliminó ningún registro en {self.tabla} (ID: {id_val}).")
+            return False
