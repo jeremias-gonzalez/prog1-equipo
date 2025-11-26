@@ -89,19 +89,9 @@ class ManagerBase:
                 print(f"Registro {id_val} en {self.tabla} actualizado con éxito.")
                 return True
             else:
-                print(f"ℹ️ No se actualizó ningún registro en {self.tabla} (ID: {id_val}).")
+                print(f"ℹNo se actualizó ningún registro en {self.tabla} (ID: {id_val}).")
                 return False
                 
         except Exception as e:
             print(f"Error al construir el UPDATE en {self.tabla}: {e}")
-            return False
-    def delete(self, id_val):
-        query = f"DELETE FROM {self.tabla} WHERE id = ?"
-        
-        filas_afectadas = self._execute_query(query, (id_val,))
-        if filas_afectadas is not None and filas_afectadas > 0:
-            print(f"Registro {id_val} eliminado de {self.tabla} con éxito.")
-            return True
-        else:
-            print(f"No se eliminó ningún registro en {self.tabla} (ID: {id_val}).")
             return False

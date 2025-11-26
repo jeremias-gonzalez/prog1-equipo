@@ -26,7 +26,6 @@ def registrar_paciente():
         "nombre": nombre,
         "apellido": apellido,
         "telefono": telefono
-        
     }
     
     id_persona_insertada = persona_db.insert(datos_persona)
